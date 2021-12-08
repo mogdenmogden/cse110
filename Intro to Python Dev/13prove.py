@@ -80,9 +80,23 @@ print()
 print(
     f'It feels like {chill_e:.2f}{chr(176)}F, or {chill_me:.2f}{chr(176)}C. ')
 print()
+print()
+print(
+    f'Here is the Wind Chill Factor at {temp_F:.2f}F / {temp_C:.2f}{chr(176)}C, over a RANGE of WIND SPEEDS: ')
+print('We are changing the wind speed and holding the temperature constant. ')
+for i in range(5, 65, 5):
+    chill_e = windchill('english', temp_F, i)
+    chill_me = windchill('metric', convert_F_to_C(temp_F), i)
+    print(
+        f'At {temp_F:.2f}{chr(176)}F/({convert_F_to_C(temp_F):.2f}{chr(176)}C), with winds of {i:.2f} mph ({english_wind_to_metric(i):.2f} kmph) it feels like {chill_e:.2f}{chr(176)}F/({chill_me:.2f}{chr(176)}C). ')
+print()
+print()
+print('Have you wondered how changing the temperature would affect the wind chill when you keep the wind constant?  ')
+print('Well, here that is - even if you hadn\'t wondered. ')
+print('We are holding wind speed constant and changing the temperature. ')
 print(
     f'Here is the Wind Chill Factor, with winds of {wind_english:.2f} mph ({wind_metric:.2f} kmph), over a range of temperatures: ')
-for i in range(0, 65, 5):
+for i in range(-20, 65, 5):
     chill_e = windchill('english', i, wind_english)
     chill_me = windchill('metric', convert_F_to_C(i), wind_metric)
     print(
